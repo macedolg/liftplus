@@ -1,10 +1,10 @@
 ﻿namespace liftplus_apiproject.Models
 {
-    public class Usuário
+    public class Usuario
     {
         public int usuarioId { get; set; }
 
-        public string usuarioNome { get; set; }
+        public string? usuarioNome { get; set; }
 
         public double Peso { get; set; }
 
