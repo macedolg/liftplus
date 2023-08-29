@@ -9,7 +9,7 @@ namespace liftplus_apiproject.Controllers
     public class UsuarioController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<List<Usuario>> UserProfile()
+        public ActionResult<List<Usuario>> BuscarPerfilUsuarios()
         {
             return Ok(new List<Usuario>());
         }
