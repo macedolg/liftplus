@@ -1,3 +1,8 @@
+using liftplus_apiproject.Data;
+using liftplus_apiproject.Repositorios;
+using liftplus_apiproject.Repositorios.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace liftplus_apiproject
 {
     public class Program
@@ -12,6 +17,13 @@ namespace liftplus_apiproject
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<LiftPLUS_DBContex>(
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+                );
+
+            builder.Services.AddScoped<iUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 

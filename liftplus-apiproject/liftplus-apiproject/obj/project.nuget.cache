@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cr28/SDbC/k8qV60p5OaXCrZzsGJzgGnXNb7SWKi/bZaW68WxMSdHepwHdh5WT+zsqAmon53ZAucw9/zr6FX2g==",
+  "dgSpecHash": "IUYYI0qDs7ZLhBwe9zDx3cbqkia6lUhDQ7gE2q2ZXS1Ko1YgL38QJvH0EVtsN5+ImvTkuPaWfM2kFHfsaABR0Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\devlucasjava\\source\\repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
+  "projectFilePath": "C:\\Users\\devlucasjava\\Source\\Repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\devlucasjava\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\devlucasjava\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

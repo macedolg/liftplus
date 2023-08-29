@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\devlucasjava\\source\\repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {}
+    "C:\\Users\\devlucasjava\\Source\\Repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\devlucasjava\\source\\repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {
+    "C:\\Users\\devlucasjava\\Source\\Repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\devlucasjava\\source\\repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
+        "projectUniqueName": "C:\\Users\\devlucasjava\\Source\\Repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
         "projectName": "liftplus-apiproject",
-        "projectPath": "C:\\Users\\devlucasjava\\source\\repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
+        "projectPath": "C:\\Users\\devlucasjava\\Source\\Repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
         "packagesPath": "C:\\Users\\devlucasjava\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\devlucasjava\\source\\repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\obj\\",
+        "outputPath": "C:\\Users\\devlucasjava\\Source\\Repos\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
