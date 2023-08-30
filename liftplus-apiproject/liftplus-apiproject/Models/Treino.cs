@@ -10,5 +10,7 @@
 
         public DateOnly dataRegistro { get; set; }
 
+        public string Status { get; set; }
+
     }
 }

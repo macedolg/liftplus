@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using liftplus_apiproject.Models;
+using liftplus_apiproject.Data.Map;
 
 namespace liftplus_apiproject.Data
 {
@@ -17,6 +18,8 @@ namespace liftplus_apiproject.Data
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
             base.OnModelCreating(modelBuilder);
         }
     }
