@@ -8,11 +8,11 @@ namespace liftplus_apiproject.Repositorios
     public class UsuarioRepositorio : iUsuarioRepositorio
     {
         private readonly LiftPLUS_DBContex _dbContext;
-        public UsuarioRepositorio(LiftPLUS_DBContex liftPLUS_DBContex) 
+        public UsuarioRepositorio(LiftPLUS_DBContex liftPLUS_DBContex)
         {
             _dbContext = liftPLUS_DBContex;
         }
-        public async Task<List<Usuario>> BuscarPerfilUsuarios()
+        public async Task<List<Usuario>> BuscarTodosUsuarios()
         {
             return await _dbContext.Usuarios.ToListAsync();
         }
@@ -34,7 +34,7 @@ namespace liftplus_apiproject.Repositorios
         {
             Usuario usuarioPorId = await BuscarPorId(id);
 
-            if(usuarioPorId == null)
+            if (usuarioPorId == null)
             {
                 throw new Exception($"Usuario Para o ID:{id} não encontrado");
             }

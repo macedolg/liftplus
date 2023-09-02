@@ -4,7 +4,7 @@ namespace liftplus_apiproject.Repositorios.Interfaces
 {
     public interface iUsuarioRepositorio
     { 
-        Task<List<Usuario>> BuscarPerfilUsuarios();
+        Task<List<Usuario>> BuscarTodosUsuarios();
 
         Task<Usuario> BuscarPorId(int id);
 

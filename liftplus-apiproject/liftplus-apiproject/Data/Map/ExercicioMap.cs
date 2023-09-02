@@ -1,20 +1,21 @@
 ﻿using liftplus_apiproject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MySqlConnector;
 
 namespace liftplus_apiproject.Data.Map
 {
-    public class Exercicio : IEntityTypeConfiguration<Treino>
+    public class ExercicioMap : IEntityTypeConfiguration<Exercicio>
     {
-        public void Configure(EntityTypeBuilder<Treino> builder)
+        public void Configure(EntityTypeBuilder<Exercicio> builder)
         {
-            builder.HasKey(x => x.treinoId);
-            builder.Property(x => x.treinoNome).IsRequired().HasMaxLength(150);
-            builder.Property(x => x.grupoMusucular).IsRequired().HasMaxLength(150);
-            builder.Property(x => x.Status).IsRequired();
+            builder.HasKey(x => x.exeId);
+            builder.Property(x => x.exeNome).IsRequired().HasMaxLength(150);
+            builder.Property(x => x.Musculo).IsRequired().HasMaxLength(150);
+            builder.HasAlternateKey(x => x.treinoId);
         }
 
-        void IEntityTypeConfiguration<Treino>.Configure(EntityTypeBuilder<Treino> builder)
+        void IEntityTypeConfiguration<Exercicio>.Configure(EntityTypeBuilder<Exercicio> builder)
         {
             throw new NotImplementedException();
         }

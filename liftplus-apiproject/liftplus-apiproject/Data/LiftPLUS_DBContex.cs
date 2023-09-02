@@ -14,12 +14,15 @@ namespace liftplus_apiproject.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
 
-        public DbSet<Treino> Treino { get; set; }   
+        public DbSet<Treino> Treino { get; set; }  
+        
+        public DbSet<Exercicio> Exercicios { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsuarioMap());
-            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new TreinoMap());
+            modelBuilder.ApplyConfiguration(new ExercicioMap());
             base.OnModelCreating(modelBuilder);
         }
     }
