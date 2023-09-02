@@ -1,7 +1,13 @@
-using liftplus_apiproject.Data;
-using liftplus_apiproject.Repositorios;
-using liftplus_apiproject.Repositorios.Interfaces;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using liftplus_apiproject.Data;
+using liftplus_apiproject.Repositorios.Interfaces;
+using liftplus_apiproject.Repositorios;
+
 
 namespace liftplus_apiproject
 {
@@ -11,23 +17,26 @@ namespace liftplus_apiproject
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
+            // Adicione serviços ao contêiner.
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddEntityFrameworkSqlServer()
+            // Configure o Entity Framework Core para usar o MySQL.
+            builder.Services.AddEntityFrameworkMySql()
                 .AddDbContext<LiftPLUS_DBContex>(
-                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+                    (provider, options) =>
+                    {
+                        options.UseMySql(provider.GetRequiredService<IConfiguration>().GetConnectionString("DataBase"), new MySqlServerVersion(new Version(8, 0, 33)));
+
+                    }
                 );
 
             builder.Services.AddScoped<iUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configure o pipeline de solicitação HTTP.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -35,10 +44,7 @@ namespace liftplus_apiproject
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
