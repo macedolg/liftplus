@@ -1,4 +1,6 @@
-﻿namespace liftplus_apiproject.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace liftplus_apiproject.Models
 {
     public class Treino
     {
@@ -11,6 +13,9 @@
         public DateOnly dataRegistro { get; set; }
 
         public string Status { get; set; }
+
+        [ForeignKey("exeId")]
+        public virtual Exercicio exercicioId { get; set; }
 
     }
 }

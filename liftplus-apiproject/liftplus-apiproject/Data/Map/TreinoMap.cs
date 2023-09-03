@@ -13,10 +13,5 @@ namespace liftplus_apiproject.Data.Map
             builder.Property(x => x.grupoMusucular).IsRequired().HasMaxLength(150);
             builder.Property(x => x.Status).IsRequired();
         }
-
-        void IEntityTypeConfiguration<Treino>.Configure(EntityTypeBuilder<Treino> builder)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

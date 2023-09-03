@@ -16,7 +16,6 @@ namespace liftplus_apiproject.Data
 
         public DbSet<Treino> Treino { get; set; }  
         
-        public DbSet<Exercicio> Exercicios { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
