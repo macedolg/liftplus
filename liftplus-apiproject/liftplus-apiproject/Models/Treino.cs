@@ -1,21 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace liftplus_apiproject.Models
 {
     public class Treino
     {
-        public int treinoId { get; set; }
+        public int ID { get; set; }
+        public string Nome { get; set; }
+        public string GrupoMuscular { get; set; }
 
-        public string treinoNome { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DataRegistro { get; set; }
 
-        public string grupoMusucular { get; set; }
-
-        public DateOnly dataRegistro { get; set; }
-
-        public string Status { get; set; }
-
-        [ForeignKey("exeId")]
-        public virtual Exercicio exercicioId { get; set; }
-
+        // Propriedade de navegação para os exercícios associados a este treino
+        public ICollection<Exercicio> Exercicios { get; set; }
     }
-}
+ }

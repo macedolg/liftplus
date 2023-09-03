@@ -14,11 +14,21 @@ namespace liftplus_apiproject.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
 
-        public DbSet<Treino> Treino { get; set; }  
-        
+        public DbSet<Treino> Treinos { get; set; }
 
-         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<Exercicio> Exercicios { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Exercicio>().HasKey
+                (e => new { e.ID, e.TreinoID });
+
+            modelBuilder.Entity<Exercicio>()
+            .HasOne(e => e.Treino)
+            .WithMany(t => t.Exercicios)
+            .HasForeignKey(e => e.TreinoID);
+
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new TreinoMap());
             modelBuilder.ApplyConfiguration(new ExercicioMap());

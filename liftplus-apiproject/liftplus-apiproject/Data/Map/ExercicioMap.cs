@@ -9,7 +9,7 @@ namespace liftplus_apiproject.Data.Map
     {
         public void Configure(EntityTypeBuilder<Exercicio> builder)
         {
-            builder.Property(x => x.exeNome).IsRequired().HasMaxLength(150);
+            builder.Property(x => x.Nome).IsRequired().HasMaxLength(150);
             builder.Property(x => x.Musculo).IsRequired().HasMaxLength(150);
         }
     }
