@@ -4,10 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using liftplus_apiproject.Data;
 using liftplus_apiproject.Repositorios.Interfaces;
 using liftplus_apiproject.Repositorios;
-
+using liftplus_apiproject.Data;
 
 namespace liftplus_apiproject
 {
@@ -22,6 +21,8 @@ namespace liftplus_apiproject
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+
             // Configure o Entity Framework Core para usar o MySQL.
             builder.Services.AddEntityFrameworkMySql()
                 .AddDbContext<LiftPLUS_DBContex>(
@@ -33,6 +34,7 @@ namespace liftplus_apiproject
                 );
 
             builder.Services.AddScoped<iUsuarioRepositorio, UsuarioRepositorio>();
+            builder.Services.AddScoped<iTreinoRepositorio, TreinoRepositorio>();
 
             var app = builder.Build();
 

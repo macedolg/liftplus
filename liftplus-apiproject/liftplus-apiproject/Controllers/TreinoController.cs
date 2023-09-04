@@ -1,5 +1,6 @@
 ﻿using liftplus_apiproject.Data;
 using liftplus_apiproject.Models;
+using liftplus_apiproject.Repositorios.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,118 +11,49 @@ namespace liftplus_apiproject.Controllers
     [ApiController]
     public class TreinoController : ControllerBase
     {
-        private readonly LiftPLUS_DBContex _context;
+        private readonly iTreinoRepositorio _treinoRepositorio;
 
-        public TreinoController(LiftPLUS_DBContex context)
+        public TreinoController(iTreinoRepositorio treinoRepositorio)
         {
-            _context = context;
+            _treinoRepositorio = treinoRepositorio;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Treino>>> GetTreinos()
+        public async Task<ActionResult<List<Treino>>> BuscarTreinos()
         {
-            return await _context.Treinos.Include(t => t.Exercicios).ToListAsync();
+            List<Treino> treinos = await _treinoRepositorio.BuscarTreinos();
+            return Ok(treinos);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Treino>> GetTreino(int id)
+        public async Task<ActionResult<List<Treino>>> BuscarTreinoID(int id)
         {
-            var treino = await _context.Treinos.Include(t => t.Exercicios).FirstOrDefaultAsync(m => m.ID == id);
-
-            if (treino == null)
-            {
-                return NotFound();
-            }
-
-            return treino;
+            Treino treino = await _treinoRepositorio.BuscarTreinoID(id);
+            return Ok(treino);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Treino>> PostTreino(Treino treino)
+        public async Task<ActionResult<Treino>> InserirTreino([FromBody] Treino treinoModel)
         {
-            _context.Treinos.Add(treino);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTreino", new { id = treino.ID }, treino);
+            Treino treino = await _treinoRepositorio.AdicionarTreino(treinoModel);
+            return Ok(treino);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTreino(int id, Treino treino)
+        [HttpDelete]
+        public async Task<bool> ApagarTreino(int id)
         {
-            if (id != treino.ID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(treino).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TreinoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTreino(int id)
-        {
-            var treino = await _context.Treinos.FindAsync(id);
-            if (treino == null)
-            {
-                return NotFound();
-            }
-
-            _context.Treinos.Remove(treino);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TreinoExists(int id)
-        {
-            return _context.Treinos.Any(e => e.ID == id);
-        }
-
-        [HttpGet("{id}/Exercicios")]
-        public async Task<ActionResult<IEnumerable<ExercicioController>>> GetExerciciosByTreino(int id)
-        {
-            var treino = await _context.Treinos.Include(t => t.Exercicios).FirstOrDefaultAsync(t => t.ID == id);
+            Treino treino = await _treinoRepositorio.BuscarTreinoID(id);
 
             if (treino == null)
             {
-                return NotFound();
+                return false;
             }
 
-            return Ok(treino.Exercicios);
-        }
+            bool sucesso = await _treinoRepositorio.ApagarTreino(id);
 
-        [HttpPost("{id}/AdicionarExercicio")]
-        public async Task<IActionResult> AdicionarExercicio(int id, Exercicio exercicio)
-        {
-            var treino = await _context.Treinos.FindAsync(id);
-
-            if (treino == null)
-            {
-                return NotFound();
-            }
-
-            treino.Exercicios.Add(exercicio);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetExerciciosByTreino", new { id = treino.ID }, treino.Exercicios);
+            return sucesso;
         }
     }
-}
+    }
+
 

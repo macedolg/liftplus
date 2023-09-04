@@ -6,10 +6,10 @@ namespace liftplus_apiproject.Data
 {
     public class LiftPLUS_DBContex : DbContext
     {
-        public LiftPLUS_DBContex(DbContextOptions<LiftPLUS_DBContex> options) 
-            : base(options) 
+        public LiftPLUS_DBContex(DbContextOptions<LiftPLUS_DBContex> options)
+            : base(options)
         {
-        
+
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -21,13 +21,12 @@ namespace liftplus_apiproject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Exercicio>().HasKey
-                (e => new { e.ID, e.TreinoID });
 
-            modelBuilder.Entity<Exercicio>()
-            .HasOne(e => e.Treino)
-            .WithMany(t => t.Exercicios)
-            .HasForeignKey(e => e.TreinoID);
+
+            modelBuilder.Entity<Treino>()
+            .HasMany(t => t.Exercicios)
+            .WithOne(e => e.Treino)
+             .HasForeignKey(e => e.TreinoID);
 
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new TreinoMap());

@@ -11,8 +11,5 @@ namespace liftplus_apiproject.Models
 
         [DataType(DataType.Date)]
         public DateTime DataRegistro { get; set; }
-
-        // Propriedade de navegação para os exercícios associados a este treino
-        public ICollection<Exercicio> Exercicios { get; set; }
     }
  }
