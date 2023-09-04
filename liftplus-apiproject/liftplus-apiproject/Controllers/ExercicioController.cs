@@ -1,5 +1,6 @@
 ﻿using liftplus_apiproject.Data;
 using liftplus_apiproject.Models;
+using liftplus_apiproject.Repositorios.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,88 +11,47 @@ namespace liftplus_apiproject.Controllers
     [ApiController]
     public class ExercicioController : ControllerBase
     {
-        private readonly LiftPLUS_DBContex _context;
+        private readonly iExercicioRepositorio _exercicioRepositorio;
 
-        public ExercicioController(LiftPLUS_DBContex context)
+        public ExercicioController(iExercicioRepositorio exercicioRepositorio)
         {
-            _context = context;
+            _exercicioRepositorio = exercicioRepositorio;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Exercicio>>> GetExercicios()
+        public async Task <ActionResult<Exercicio>> BuscarExercicios()
         {
-            return await _context.Exercicios.ToListAsync();
+            Exercicio exercicio = await _exercicioRepositorio.BuscarExercicios();
+            return Ok(exercicio);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Exercicio>> GetExercicio(int id)
+        public async Task<ActionResult<Exercicio>> BuscarExercicioID(int id)
         {
-            var exercicio = await _context.Exercicios.FindAsync(id);
-
-            if (exercicio == null)
-            {
-                return NotFound();
-            }
-
-            return exercicio;
+            Exercicio exercicio = await _exercicioRepositorio.BuscarExercicioId(id);
+            return Ok(exercicio);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Exercicio>> PostExercicio(Exercicio exercicio)
+        public async Task<ActionResult<Exercicio>> AdicionarExercicio([FromBody] Exercicio exercicioModel)
         {
-            _context.Exercicios.Add(exercicio);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetExercicio", new { id = exercicio.ID }, exercicio);
+            Exercicio exercicio = await _exercicioRepositorio.AdicionarExercicio(exercicioModel);
+            return Ok(exercicio);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutExercicio(int id, Exercicio exercicio)
+        [HttpDelete]
+        public async Task<bool> ApagarExercicio(int id)
         {
-            if (id != exercicio.ID)
-            {
-                return BadRequest();
-            }
+            Exercicio exercicio = await _exercicioRepositorio.BuscarExercicioId(id);
 
-            _context.Entry(exercicio).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ExercicioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteExercicio(int id)
-        {
-            var exercicio = await _context.Exercicios.FindAsync(id);
             if (exercicio == null)
             {
-                return NotFound();
+                return false;
             }
 
-            _context.Exercicios.Remove(exercicio);
-            await _context.SaveChangesAsync();
+            bool sucesso = await _exercicioRepositorio.ApagarExercicio(id);
 
-            return NoContent();
-        }
-
-        private bool ExercicioExists(int id)
-        {
-            return _context.Exercicios.Any(e => e.ID == id);
+            return sucesso;
         }
     }
 }

@@ -8,9 +8,6 @@ namespace liftplus_apiproject.Models
         public string Nome { get; set; }
         public string Musculo { get; set; }
 
-        public int? TreinoID { get; set; }
-
-        public Treino Treino { get; set; }
 
     }
 }

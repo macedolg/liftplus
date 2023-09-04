@@ -16,6 +16,5 @@
 
         public string Email { get; set; }
 
-        public Treino? Treino { get; set; }
     }
 }

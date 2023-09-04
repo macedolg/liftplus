@@ -21,13 +21,6 @@ namespace liftplus_apiproject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
-            modelBuilder.Entity<Treino>()
-            .HasMany(t => t.Exercicios)
-            .WithOne(e => e.Treino)
-             .HasForeignKey(e => e.TreinoID);
-
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new TreinoMap());
             modelBuilder.ApplyConfiguration(new ExercicioMap());

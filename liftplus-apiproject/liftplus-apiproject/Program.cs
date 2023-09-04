@@ -35,6 +35,7 @@ namespace liftplus_apiproject
 
             builder.Services.AddScoped<iUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<iTreinoRepositorio, TreinoRepositorio>();
+            builder.Services.AddScoped<iExercicioRepositorio, ExercicioRepositorio>();
 
             var app = builder.Build();
 
