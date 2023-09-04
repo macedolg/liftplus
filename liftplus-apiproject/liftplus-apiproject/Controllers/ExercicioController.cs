@@ -19,10 +19,10 @@ namespace liftplus_apiproject.Controllers
         }
 
         [HttpGet]
-        public async Task <ActionResult<Exercicio>> BuscarExercicios()
+        public async Task <ActionResult<List<Exercicio>>> BuscarExercicios()
         {
-            Exercicio exercicio = await _exercicioRepositorio.BuscarExercicios();
-            return Ok(exercicio);
+            List<Exercicio> exercicios = await _exercicioRepositorio.BuscarExercicios();
+            return Ok(exercicios);
         }
 
         [HttpGet("{id}")]
