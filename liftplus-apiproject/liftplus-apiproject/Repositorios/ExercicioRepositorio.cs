@@ -14,9 +14,9 @@ namespace liftplus_apiproject.Repositorios
             _dbContext = liftPLUS_DBContex;
         }
 
-        public async Task<Exercicio> BuscarExercicios()
+        public async Task<List<Exercicio>> BuscarExercicios()
         {
-            return await _dbContext.Exercicios.FindAsync();
+            return await _dbContext.Exercicios.ToListAsync();
         }
 
         public async Task<Exercicio> BuscarExercicioId(int id)

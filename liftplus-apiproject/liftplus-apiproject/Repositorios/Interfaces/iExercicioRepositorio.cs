@@ -6,7 +6,7 @@ namespace liftplus_apiproject.Repositorios.Interfaces
     public interface iExercicioRepositorio 
     {
         Task<Exercicio> BuscarExercicioId(int id);
-        Task<Exercicio> BuscarExercicios();
+        Task<List<Exercicio>> BuscarExercicios();
 
         Task<Exercicio> AdicionarExercicio(Exercicio exercicio);
 
