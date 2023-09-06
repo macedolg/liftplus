@@ -1,3 +1,5 @@
+drop database dbLiftPLUS;
+
 create database dbLiftPLUS;
 
 use dbLiftPLUS;
@@ -6,7 +8,7 @@ use dbLiftPLUS;
 
 CREATE TABLE Usuarios (
 
-    usuarioId INT PRIMARY KEY,
+    usuarioId INT PRIMARY KEY auto_increment,
 
     usuarioNome VARCHAR(255),
 
@@ -28,7 +30,7 @@ CREATE TABLE Usuarios (
 
 CREATE TABLE Treinos (
 
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY auto_increment,
 
     Nome VARCHAR(255),
 
@@ -48,7 +50,7 @@ CREATE TABLE Treinos (
 
 CREATE TABLE Exercicios (
 
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY auto_increment,
 
     Nome VARCHAR(255),
 
@@ -72,32 +74,32 @@ CREATE TABLE Exercicios (
 
 -- Usuário
 
-INSERT INTO Usuarios (usuarioId, usuarioNome, Peso, Altura, Sexo, Senha, Email)
+INSERT INTO Usuarios (usuarioNome, Peso, Altura, Sexo, Senha, Email)
 
-VALUES (1, 'João', 70.5, 175.0, 'M', 'senha123', 'joao@example.com'),
+VALUES ('João', 70.5, 175.0, 'M', 'senha123', 'joao@example.com'),
 
-(2, 'Maria', 60.0, 160.0, 'F', 'senha456', 'maria@example.com');
+('Maria', 60.0, 160.0, 'F', 'senha456', 'maria@example.com');
 
  
 
 -- Treino
 
-INSERT INTO Treinos (ID, Nome, GrupoMuscular, dataRegistro, UsuarioID)
+INSERT INTO Treinos (Nome, GrupoMuscular, dataRegistro)
 
-VALUES (1, 'Treino de Pernas', 'Pernas', '2023-09-02', 1),
+VALUES ( 'Treino de Pernas', 'Pernas', '2023-09-02'),
 
-(2, 'Treino de Peito', 'Peito', '2023-09-02', 2);
+('Treino de Peito', 'Peito', '2023-09-02');
 
     
 
 -- Exercício
 
-INSERT INTO Exercicios (ID, Nome, Musculo, TreinoID)
+INSERT INTO Exercicios (Nome, Musculo)
 
-VALUES (1, 'Agachamento', 'Pernas', 1),
+VALUES ('Agachamento', 'Pernas'),
 
-(2, 'Leg Press', 'Pernas', 1),
+('Leg Press', 'Pernas'),
 
-    (3, 'Supino', 'Peito', 2),
+    ('Supino', 'Peito'),
 
-    (4, 'Crucifixo', 'Peito', 2);
+    ('Crucifixo', 'Peito');
