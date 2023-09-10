@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\lauan\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "C:\\Users\\lauan\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
         "packagesPath": "C:\\Users\\lauan\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\lauan\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\obj\\",
+=======
+    "C:\\Users\\3ds\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\3ds\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\3ds\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
+        "projectName": "liftplus-apiproject",
+        "projectPath": "C:\\Users\\3ds\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\liftplus-apiproject.csproj",
+        "packagesPath": "C:\\Users\\3ds\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\3ds\\Desktop\\LiftPLUS\\liftplus-apiproject\\liftplus-apiproject\\obj\\",
+>>>>>>> 459c7425972e9507f49cad63d6218ff2ccae2fc7
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\lauan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\3ds\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 459c7425972e9507f49cad63d6218ff2ccae2fc7
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,6 +45,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +112,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+>>>>>>> 459c7425972e9507f49cad63d6218ff2ccae2fc7
         }
       }
     }
