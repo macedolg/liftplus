@@ -39,6 +39,42 @@ namespace liftplus_apiproject.Controllers
             return Ok(treino);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Treino>> UpdateTreino(int id, [FromBody] Treino treinoModel)
+        {
+            Treino treinoAtual = await _treinoRepositorio.BuscarTreinoID(id);
+
+            if (treinoAtual == null)
+            {
+                return NotFound();
+            }
+
+            // Verifica se o campo Nome foi fornecido no corpo da solicitação
+            if (!string.IsNullOrWhiteSpace(treinoModel.Nome))
+            {
+                treinoAtual.Nome = treinoModel.Nome;
+            }
+
+            // Verifica se o campo GrupoMuscular foi fornecido no corpo da solicitação
+            if (!string.IsNullOrWhiteSpace(treinoModel.GrupoMuscular))
+            {
+                treinoAtual.GrupoMuscular = treinoModel.GrupoMuscular;
+            }
+
+            // Você pode adicionar verificações semelhantes para outros campos que deseja atualizar
+
+            Treino treinoAtualizado = await _treinoRepositorio.AtualizarTreino(treinoAtual, id);
+
+            if (treinoAtualizado == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(treinoAtualizado);
+        }
+
+
+
         [HttpDelete]
         public async Task<bool> ApagarTreino(int id)
         {

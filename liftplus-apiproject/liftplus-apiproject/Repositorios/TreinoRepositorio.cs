@@ -36,16 +36,27 @@ namespace liftplus_apiproject.Repositorios
 
             if (TreinoPorId == null)
             {
-                throw new Exception($"Treino Para o ID:{id} não encontrado");
+                return null;
             }
 
-            TreinoPorId.Nome = treino.Nome;
+            if (!string.IsNullOrWhiteSpace(treino.Nome))
+            {
+                TreinoPorId.Nome = treino.Nome;
+            }
+
+            if (!string.IsNullOrWhiteSpace(treino.GrupoMuscular))
+            {
+                TreinoPorId.GrupoMuscular = treino.GrupoMuscular;
+            }
+
 
             _dbContext.Treinos.Update(TreinoPorId);
             await _dbContext.SaveChangesAsync();
 
             return TreinoPorId;
         }
+
+
 
         public async Task<bool> ApagarTreino(int id)
         {
