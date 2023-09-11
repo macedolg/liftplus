@@ -23,7 +23,7 @@ Primeiro clone o projeto para sua máquina local
 git clone https://github.com/macedolg/LiftPLUS.git
 ```
 ## Criar e utilizar o banco de dados
-Baixe e execute a query "dbLiftPLUS.sql" no seu MySQL Workbench. <br/>
+Baixe e execute a query <a href="https://github.com/macedolg/LiftPLUS/blob/main/dbLiftPLUS.sql" target="_blank">dbLiftPLUS.sql</a> no seu MySQL Workbench. <br/>
 Abra o arquivo appsettings.json em seu projeto e atualize a seção ConnectionStrings com as informações do seu banco de dados MySQL:
 ```bash
 // ...
