@@ -1,5 +1,5 @@
 <h1>Lift+  </h1>  
-Aplicação Mobile desenvolvida em Java para o projeto disciplinar da matéria PAM
+API em ASP.NET para Aplicação Mobile desenvolvida em Java para o projeto disciplinar da matéria PAM
         <div>
         <h1> Dupla </h1>
         <h3> Lauan Amorim </h3>
